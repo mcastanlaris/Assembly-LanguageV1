@@ -1,0 +1,50 @@
+TITLE Ejercicios14oct15tLosPitufos	(Ejercicios14oct15tLosPitufos.asm)
+
+; OPC
+;Fecha de desarrollo: 14 de octubre del 2015
+;Nombre del equipo: Los pitufos
+;Maria Castañeda 183826
+;Juan Pablo Fonseca 138263
+;Danae Sanchez 136040
+;Nombre del reporte: "Ejercicios14oct15t"
+
+INCLUDE Irvine32.inc
+
+.DATA
+
+mensaje BYTE "Escriba el número de los nuevos salarios ",0
+siguiente BYTE "Teclee el siguiente nuevo salario: ",0
+resultado BYTE "Resultado: ",0
+
+.CODE
+; Procedimiento principal
+main PROC
+	call Clrscr
+	mov ebx, 0 ;Se inicializa el registro EBX en 0 (para comenzar la suma)
+
+  ;Imprimir Mensaje
+   mov edx,OFFSET mensaje ; "Escriba el número de los nuevos salarios"
+   call WriteString ; desplegar mensaje
+   call ReadInt ; entero se guarda en EAX 
+   mov ecx, eax  ;el contador ECX se inicializa con el valor que brinda el usuario
+
+   ciclo:
+		mov edx, OFFSET siguiente
+		call WriteString ; desplegar mensaje
+    call ReadInt ; entero se guarda en EAX 
+		call Crlf ; ir a la siguiente línea de salida
+		add ebx, eax
+	loop ciclo
+	
+	mov eaX,EBX
+	;Imprimo resultado final
+	mov edx, OFFSET resultado
+	call WriteString ; desplegar mensaje
+	call writeInt
+	
+    exit
+main ENDP
+; Termina el procedimiento principal
+
+; Termina el area de Ensamble
+END main
