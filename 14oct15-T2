@@ -31,10 +31,10 @@ main PROC
    
    jmp inicioWhile
 
-  dowh:
+    dowh:
 		mov edx, OFFSET siguiente
 		call WriteString ; desplegar mensaje
-    call ReadInt ; entero se guarda en EAX 
+        call ReadInt ; entero se guarda en EAX 
 		call Crlf ; ir a la siguiente línea de salida
 		add ebx, eax
 	
